@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{%block mainblock%}
+{% for i in qs %}
+<div class="card mb-3 w-75 ">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {%if 'i.poster' %}
+        <img src="{{ i.poster.url }}" class="img-fluid rounded-start" alt="...">
+        {%endif%}  
+    </div>
+      <div class="col-md-5">
+        <div class="card-body">
+          
+            
+
+          <h5 class="card-title">{{i.title}}</h5>
+          <h5 class="card-title">{{i.company_name}}</h5>
+          <h5 class="card-title">{{i.experience}}</h5>
+          <h5 class="card-title">{{i.salary}}</h5>
+          <h5 class="card-title">{{i.qualification}}</h5>
+          <h5 class="card-title">{{i.skills}}</h5> 
+          <h5 class="card-title">{{i.category}}</h5>
+          
+
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <!-- <a href=""><button class="btn btn-dark mt-4 mb-4 w-50">view</button></a> -->
+        <a href="{% url 'jobdel' i.id %}"><button class="btn btn-dark mt-4 mb-4 w-50">DELETE</button></a>
+        <a href="{% url 'edit' i.id %}"><button class="btn btn-dark mt-4 mb-4 w-50">UPDATE</button></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+{%endblock%}
